@@ -33,7 +33,7 @@ services:
   app:
     build: .
     container_name: my_app
-    restart: unless-stopped
+    restart: no
     depends_on:
       postgres:
         condition: service_healthy

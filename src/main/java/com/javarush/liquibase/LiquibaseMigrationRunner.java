@@ -13,6 +13,8 @@ import java.sql.Connection;
 import java.util.HashMap;
 import java.util.Map;
 
+import static com.javarush.AppConfig.DB_SCHEMA;
+
 public class LiquibaseMigrationRunner {
 
     private static final String CHANGELOG_FILE = "liquibase-migration/changelog-master.xml";
@@ -26,8 +28,8 @@ public class LiquibaseMigrationRunner {
                         .getInstance()
                         .findCorrectDatabaseImplementation(new JdbcConnection(connection));
 
-                database.setDefaultSchemaName(PostgresConnectionData.DB_SCHEMA);
-                database.setLiquibaseSchemaName(PostgresConnectionData.DB_SCHEMA);
+                database.setDefaultSchemaName(DB_SCHEMA);
+                database.setLiquibaseSchemaName(DB_SCHEMA);
 
                 Liquibase liquibase = new Liquibase(
                         CHANGELOG_FILE,

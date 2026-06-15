@@ -5,13 +5,9 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.sql.Statement;
 
+import static com.javarush.AppConfig.*;
+
 public class PostgresConnectionData {
-
-    public static final String DB_URL = System.getenv().getOrDefault("DB_URL", "jdbc:postgresql://postgres:5432/world");
-    public static final String DB_USER = System.getenv().getOrDefault("POSTGRES_USER", "postgres");
-    public static final String DB_PASSWORD = System.getenv().getOrDefault("POSTGRES_PASSWORD", "postgres");
-
-    public static final String DB_SCHEMA = System.getenv().getOrDefault("POSTGRES_DB", "world");
 
     private PostgresConnectionData() {
     }

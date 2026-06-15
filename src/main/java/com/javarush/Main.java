@@ -8,7 +8,6 @@ import com.javarush.domain.City;
 import com.javarush.domain.Country;
 import com.javarush.domain.CountryLanguage;
 import com.javarush.liquibase.LiquibaseMigrationRunner;
-import com.javarush.liquibase.PostgresConnectionData;
 import com.javarush.redis.CityCountry;
 import com.javarush.redis.Language;
 import io.lettuce.core.RedisClient;
@@ -26,6 +25,7 @@ import java.util.Properties;
 import java.util.Set;
 import java.util.stream.Collectors;
 
+import static com.javarush.AppConfig.*;
 import static java.util.Objects.nonNull;
 
 public class Main {
@@ -76,9 +76,9 @@ public class Main {
         Properties properties = new Properties();
         properties.put(Environment.DIALECT, "org.hibernate.dialect.PostgreSQLDialect");
         properties.put(Environment.DRIVER, "org.postgresql.Driver");
-        properties.put(Environment.URL, PostgresConnectionData.DB_URL);
-        properties.put(Environment.USER, PostgresConnectionData.DB_USER);
-        properties.put(Environment.PASS, PostgresConnectionData.DB_PASSWORD);
+        properties.put(Environment.URL, DB_URL);
+        properties.put(Environment.USER, DB_USER);
+        properties.put(Environment.PASS, DB_PASSWORD);
         properties.put(Environment.CURRENT_SESSION_CONTEXT_CLASS, "thread");
         properties.put(Environment.HBM2DDL_AUTO, "update");
         properties.put(Environment.STATEMENT_BATCH_SIZE, "100");
@@ -149,7 +149,7 @@ public class Main {
     }
 
     private RedisClient prepareRedisClient() {
-        RedisClient redisClient = RedisClient.create(RedisURI.create("redis", 6379));
+        RedisClient redisClient = RedisClient.create(RedisURI.create(REDIS_HOST, REDIS_PORT));
         try (StatefulRedisConnection<String, String> connection = redisClient.connect()) {
             System.out.println("\nConnected to Redis\n");
         }
