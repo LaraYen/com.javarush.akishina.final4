@@ -1,0 +1,170 @@
+databaseChangeLog:
+  - changeSet:
+      id: 1781131897520-1
+      author: liquibase (generated)
+      changes:
+        - createTable:
+            schemaName: world
+            tableName: city
+            ifNotExists: true
+            columns:
+              - column:
+                  name: id
+                  type: INT
+                  autoIncrement: true
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+              - column:
+                  name: name
+                  type: VARCHAR(35)
+                  defaultValue: ""
+                  constraints:
+                    nullable: false
+              - column:
+                  name: country_id
+                  type: INT
+                  constraints:
+                    nullable: false
+              - column:
+                  name: district
+                  type: VARCHAR(20)
+                  defaultValue: ""
+                  constraints:
+                    nullable: false
+              - column:
+                  name: population
+                  type: INT
+                  defaultValueNumeric: 0
+                  constraints:
+                    nullable: false
+
+  - changeSet:
+      id: 1781131897520-2
+      author: liquibase (generated)
+      changes:
+        - createTable:
+            schemaName: world
+            tableName: country
+            ifNotExists: true
+            columns:
+              - column:
+                  name: id
+                  type: INT
+                  defaultValueNumeric: 0
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+              - column:
+                  name: code
+                  type: VARCHAR(3)
+                  defaultValue: ""
+                  constraints:
+                    nullable: false
+              - column:
+                  name: code_2
+                  type: VARCHAR(2)
+                  defaultValue: ""
+                  constraints:
+                    nullable: false
+              - column:
+                  name: name
+                  type: VARCHAR(52)
+                  defaultValue: ""
+                  constraints:
+                    nullable: false
+              - column:
+                  name: continent
+                  type: INT
+                  defaultValueNumeric: 0
+                  remarks: "0-ASIA, 1-EUROPE, 2-NORTH_AMERICA, 3-AFRICA, 4-OCEANIA, 5-ANTARCTICA, 6-SOUTH_AMERICA"
+                  constraints:
+                    nullable: false
+              - column:
+                  name: region
+                  type: VARCHAR(26)
+                  defaultValue: ""
+                  constraints:
+                    nullable: false
+              - column:
+                  name: surface_area
+                  type: DECIMAL(10,2)
+                  defaultValueNumeric: 0.00
+                  constraints:
+                    nullable: false
+              - column:
+                  name: indep_year
+                  type: SMALLINT
+              - column:
+                  name: population
+                  type: INT
+                  defaultValueNumeric: 0
+                  constraints:
+                    nullable: false
+              - column:
+                  name: life_expectancy
+                  type: DECIMAL(3,1)
+              - column:
+                  name: gnp
+                  type: DECIMAL(10,2)
+              - column:
+                  name: gnpo_id
+                  type: DECIMAL(10,2)
+              - column:
+                  name: local_name
+                  type: VARCHAR(45)
+                  defaultValue: ""
+                  constraints:
+                    nullable: false
+              - column:
+                  name: government_form
+                  type: VARCHAR(45)
+                  defaultValue: ""
+                  constraints:
+                    nullable: false
+              - column:
+                  name: head_of_state
+                  type: VARCHAR(60)
+              - column:
+                  name: capital
+                  type: INT
+
+  - changeSet:
+      id: 1781131897520-3
+      author: liquibase (generated)
+      changes:
+        - createTable:
+            schemaName: world
+            tableName: country_language
+            ifNotExists: true
+            columns:
+              - column:
+                  name: id
+                  type: INT
+                  autoIncrement: true
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+              - column:
+                  name: country_id
+                  type: INT
+                  constraints:
+                    nullable: false
+              - column:
+                  name: language
+                  type: VARCHAR(30)
+                  defaultValue: ""
+                  constraints:
+                    nullable: false
+              - column:
+                  name: is_official
+                  type: BOOLEAN
+                  defaultValueNumeric: 0
+                  constraints:
+                    nullable: false
+              - column:
+                  name: percentage
+                  type: DECIMAL(4,1)
+                  defaultValueNumeric: 0.0
+                  constraints:
+                    nullable: false
